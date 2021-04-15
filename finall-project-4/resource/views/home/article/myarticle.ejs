@@ -1,0 +1,99 @@
+
+        <!-- my articles -->
+                         
+
+        <div class="container emp-profile">
+          <h1>مقاله های من</h1>
+          <hr />
+          <section id="gallery" class="my-5">
+            <div class="container">
+              <div class="row">
+                <% if(articles.length===0) {%>
+                  <h1 class="text-center text-danger">شما مقاله ای ندارید</h1> 
+                  <% } %> 
+                <% for(let article of articles){ %>
+                <div class="col-lg-4 mb-4">
+                  <div class="card">
+                    <img
+                      src="<%=`http://localhost:3000/${article.image.replace('public/','')}`%>"
+                      alt="<%=article.title  %> "
+                      class="card-img-top"
+                      style="height: 250px;"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title"><%= article.title %></h5>
+                      <p class="card-text">
+                        <%= article.description1.slice(0,50) +' ...' %> 
+                      </p>
+                      <a href="/article/<%= article._id %> " class="btn btn-success btn-sm">ادامه مقاله</a>
+                 
+                                    <!--  dropdown action -->
+
+                                    <div class="btn-group" >
+                                      <button
+                                        type="button"
+                                        class="btn btn-warning btn-sm text-dark dropdown-toggle"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false"
+                                      >
+                                        عملیات بیشتر
+                                      </button>
+                                      <ul class="dropdown-menu" id="dropdown">
+                                        <li class="">
+                                          <a
+                                            href="/article/edit/<%= article._id %>  "
+                                            type="button"
+                                            class="btn border border-0"
+                                    
+                                          >
+                                            ویرایش مقاله
+                                          </a>
+                                        </li>
+                                  
+                                        <li><hr class="dropdown-divider" /></li>
+                                        <li>
+                                          <form action="/article/delete" method="POST">
+                                            <input type="hidden" name="articleId"  value="<%= article._id %>"/>
+                                            <button
+                                              type="submit"
+                                              class="border border-0 text-danger"
+                                        
+                                            >
+                                              حذف  مقاله
+                                            </button>
+                                          </form>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <!-- end of dropdown action -->
+                      <p class="text-muted small mt-4 mb-0">
+                    
+                        <span
+                          >ارسال شده در <%= date(article.createdAt).format("jD jMMMM jYYYY") %>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+  
+              </div>
+            </div>
+          </section>
+                 <!-- pagination -->
+          <%- include('../includes/pagination.ejs',{pagination}) %> 
+                <!-- end of pagination -->
+
+                <div style="margin-bottom: 200px"></div>
+        </div>
+
+
+        
+        
+
+
+
+
+
+        
+    

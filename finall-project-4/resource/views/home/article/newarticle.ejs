@@ -1,0 +1,52 @@
+<div class="container emp-profile">  
+  <h1> ایجاد مقاله جدید</h1>
+  <hr> 
+
+
+  <!-- ckeditro -->
+
+  <form action="/article" method="POST" enctype="multipart/form-data">
+    <div class="form-group row mb-4">
+      <label for="title" class="col-sm-2 col-form-label h5">عنوان مقاله</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control-plaintext border border-1 " id="title" name="title">
+      </div>
+    </div>
+
+    <div class="form-group row mb-4">
+      <label for="description1" class="col-sm-2 col-form-label h5"> توضیحات</label>
+      <div class="col-sm-10">
+        <input type="text"  class="form-control-plaintext border border-1 " id="description1" name="description1">
+      </div>
+    </div>
+
+    <div class="form-group row mb-4">
+      <label for="image" class="col-sm-2 col-form-label h5">عکس مقاله</label>
+      <div class="col-sm-10">
+        <input type="file" class="form-control" id="image" name="article-image">
+      </div>
+    </div>
+
+    <div class="form-group row d-flex flex-row">
+      <label for="editor" class="col-sm-2 col-form-label h5 align-self-center"></label>
+      <div class="col-sm-10">
+        <textarea rows="20" name="editor" id="editor" ></textarea>
+        <!-- <input name="tinymce" type="file" id="upload" class="hidden" onchange="" style="display: none;"> -->
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+      <input type="hidden" name="userId" value="<%=userr._id%>">
+
+        <button type="submit" class="btn btn-success" >ثبت مقاله</button>
+      </div>
+    </div>
+  </form>
+
+
+
+
+  <!-- end ckeditro -->
+
+</div>

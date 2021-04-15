@@ -1,0 +1,67 @@
+
+<div class="container emp-profile">
+<div class="row m-3">
+  <div class="col-10 ">
+    <h3 ><%= article.title %></h3>
+
+  </div>
+  <div class="col-2 ">
+
+    <div class="btn-group" >
+      <button
+        type="button"
+        class="btn btn-warning btn-sm text-dark dropdown-toggle"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        عملیات بیشتر
+      </button>
+      <ul class="dropdown-menu" id="dropdown">
+        <li class="">
+          <a
+          href="/article/edit/<%= article._id  %> "
+            type="button"
+            class="btn border border-0"
+  
+          >
+            ویرایش مقاله
+          </a>
+        </li>
+    
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <form action="/article/delete" method="POST">
+            <input type="hidden" name="articleId" value="<%= article._id %>"  />
+            <button
+              type="submit"
+              class="border border-0 text-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              data-bs-whatever="@mdo"
+            >
+              حذف  مقاله
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  <div class="card mb-3">
+       
+    <img class="card-img-top m-auto" src="<%=`http://localhost:3000/${article.image.replace('public/','')}`%>" alt="<%=article.title  %> " style="height:450px;">
+    <hr>
+
+    <div class="card-body">
+      <h5 class="card-title"><% article.title %></h5>
+      <p class="card-text"><%= article.description1 %></p>
+      <div>
+        <%- article.description2 %>
+      </div>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+
+
+</div>
+
